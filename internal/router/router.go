@@ -3,12 +3,16 @@ package router
 import (
 	"net/http"
 
+	"github.com/so00yeon/go-health-k8s/internal/config"
 	"github.com/so00yeon/go-health-k8s/internal/handler"
 )
 
-func New() *http.ServeMux {
+func New(cfg *config.Config) *http.ServeMux {
 	mux := http.NewServeMux()
-	mux.HandleFunc("GET /health", handler.Health)
-	mux.HandleFunc("GET /version", handler.Version)
+
+	h := handler.New(cfg)
+	mux.HandleFunc("GET /health", h.Health)
+	mux.HandleFunc("GET /version", h.Version)
+
 	return mux
 }

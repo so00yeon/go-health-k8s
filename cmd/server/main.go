@@ -11,7 +11,7 @@ import (
 
 func main() {
 	cfg := config.Load()
-	mux := router.New()
+	mux := router.New(cfg)
 
 	addr := ":" + cfg.Port
 	fmt.Printf("Server listening on %s (env=%s)\n", addr, cfg.AppEnv)

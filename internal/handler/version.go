@@ -4,8 +4,6 @@ import (
 	"encoding/json"
 	"log/slog"
 	"net/http"
-
-	"github.com/so00yeon/go-health-k8s/internal/config"
 )
 
 type versionResponse struct {
@@ -13,12 +11,11 @@ type versionResponse struct {
 	Env     string `json:"env"`
 }
 
-func Version(w http.ResponseWriter, r *http.Request) {
-	cfg := config.Load()
+func (h *Handler) Version(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	if err := json.NewEncoder(w).Encode(versionResponse{
-		Version: cfg.AppVersion,
-		Env:     cfg.AppEnv,
+		Version: h.cfg.AppVersion,
+		Env:     h.cfg.AppEnv,
 	}); err != nil {
 		slog.Error("failed to encode response", "error", err)
 	}
