@@ -42,6 +42,19 @@ PORT=3000 APP_ENV=production APP_VERSION=1.0.0 go run cmd/server/main.go
 | GET    | /health   | 헬스체크          |
 | GET    | /version  | 버전 및 환경 정보  |
 
+## Docker
+
+```bash
+# 빌드
+docker build -t go-health-k8s:latest .
+
+# 실행
+docker run -p 8080:8080 -e APP_ENV=production go-health-k8s:latest
+
+# 확인
+curl http://localhost:8080/health
+```
+
 ## 테스트
 
 ```bash
