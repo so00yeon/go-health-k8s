@@ -55,6 +55,32 @@ docker run -p 8080:8080 -e APP_ENV=production go-health-k8s:latest
 curl http://localhost:8080/health
 ```
 
+## Kubernetes (minikube)
+
+```bash
+# minikube 시작
+minikube start
+
+# minikube 내부 Docker 데몬 사용
+eval $(minikube docker-env)
+
+# 이미지 빌드 (minikube Docker에서 직접)
+docker build -t go-health-k8s:latest .
+
+# 매니페스트 적용
+kubectl apply -f k8s/configmap.yaml
+kubectl apply -f k8s/deployment.yaml
+kubectl apply -f k8s/service.yaml
+
+# 상태 확인
+kubectl get pods
+kubectl get svc
+
+# 포트포워딩으로 접근
+kubectl port-forward svc/go-health-k8s 8080:80
+curl http://localhost:8080/health
+```
+
 ## 테스트
 
 ```bash
