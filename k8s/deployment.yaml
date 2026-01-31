@@ -23,3 +23,9 @@ spec:
                 name: go-health-k8s-config
           ports:
             - containerPort: 8080
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 10
