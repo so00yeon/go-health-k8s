@@ -18,5 +18,8 @@ spec:
         - name: go-health-k8s
           image: go-health-k8s:latest
           imagePullPolicy: IfNotPresent
+          envFrom:
+            - configMapRef:
+                name: go-health-k8s-config
           ports:
             - containerPort: 8080
