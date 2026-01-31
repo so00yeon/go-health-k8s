@@ -17,5 +17,6 @@ spec:
       containers:
         - name: go-health-k8s
           image: go-health-k8s:latest
+          imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
