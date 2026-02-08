@@ -111,3 +111,10 @@ curl http://localhost:8080/health
 ```bash
 go test ./...
 ```
+
+## 배운 점
+
+- **Go**: 패키지 구조(`cmd/` / `internal/`), 인터페이스 기반 설계, `net/http` 표준 라이브러리만으로 충분한 HTTP 서버 구축이 가능하다는 점
+- **Docker**: 멀티스테이지 빌드로 최종 이미지 크기를 최소화하는 방법, `distroless` 베이스 이미지의 장점
+- **Kubernetes**: Deployment/Service/ConfigMap의 역할 분리, `envFrom`으로 설정 주입, liveness/readiness probe를 통한 컨테이너 상태 관리
+- **CI/CD**: GitHub Actions에서 테스트 → 이미지 빌드 → 레지스트리 푸시까지 이어지는 파이프라인 구성
