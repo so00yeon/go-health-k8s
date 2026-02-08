@@ -68,9 +68,9 @@ eval $(minikube docker-env)
 docker build -t go-health-k8s:latest .
 
 # 매니페스트 적용
-kubectl apply -f k8s/configmap.yaml
-kubectl apply -f k8s/deployment.yaml
-kubectl apply -f k8s/service.yaml
+kubectl apply -f k8s/base/configmap.yaml
+kubectl apply -f k8s/base/deployment.yaml
+kubectl apply -f k8s/base/service.yaml
 
 # 상태 확인
 kubectl get pods
