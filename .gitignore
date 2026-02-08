@@ -1,16 +1,23 @@
 # Binary
 /bin/
+/server
 *.exe
 *.out
-/server
 
 # IDE
 .idea/
 .vscode/
 *.swp
+*.swo
 
 # OS
 .DS_Store
+Thumbs.db
 
 # Environment
 .env
+.env.*
+
+# Temporary
+tmp/
+*.log
