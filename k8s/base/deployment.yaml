@@ -14,6 +14,7 @@ spec:
       labels:
         app: go-health-k8s
     spec:
+      terminationGracePeriodSeconds: 15
       containers:
         - name: go-health-k8s
           image: go-health-k8s:latest
@@ -29,6 +30,7 @@ spec:
               port: 8080
             initialDelaySeconds: 5
             periodSeconds: 10
+            timeoutSeconds: 2
           readinessProbe:
             httpGet:
               path: /health
@@ -36,3 +38,4 @@ spec:
             initialDelaySeconds: 3
             periodSeconds: 5
             failureThreshold: 3
+            timeoutSeconds: 2
