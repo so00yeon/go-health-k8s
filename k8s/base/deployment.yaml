@@ -26,14 +26,14 @@ spec:
             - containerPort: 8080
           livenessProbe:
             httpGet:
-              path: /health
+              path: /live
               port: 8080
             initialDelaySeconds: 5
             periodSeconds: 10
             timeoutSeconds: 2
           readinessProbe:
             httpGet:
-              path: /health
+              path: /ready
               port: 8080
             initialDelaySeconds: 3
             periodSeconds: 5

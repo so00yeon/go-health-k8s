@@ -12,6 +12,8 @@ func New(cfg *config.Config) *http.ServeMux {
 
 	h := handler.New(cfg)
 	mux.HandleFunc("GET /health", h.Health)
+	mux.HandleFunc("GET /live", h.Live)
+	mux.HandleFunc("GET /ready", h.Ready)
 	mux.HandleFunc("GET /version", h.Version)
 
 	return mux
